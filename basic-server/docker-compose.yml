@@ -6,8 +6,20 @@ services:
     build:
       context: ./
       dockerfile: ./Dockerfile
-    working_dir: /usr/src/app
     volumes:
       - .:/usr/src/app
     ports:
       - '3000:3000'
+    restart: 'unless-stopped'
+  mongo:
+    image: mongo
+    container_name: mongodb
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - '27017:27017'
+    restart: 'unless-stopped'
+
+volumes:
+  mongo_data:
+    driver: local
