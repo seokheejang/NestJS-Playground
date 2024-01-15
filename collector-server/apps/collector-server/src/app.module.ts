@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Ethersv5Module } from '@app/ethersv5';
+import { MongodbModule } from './mongodb/mongodb.module';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { Ethersv5Module } from '@app/ethersv5';
       envFilePath: `.env.${process.env.NODE_ENV || 'dev'}`,
     }),
     Ethersv5Module,
+    MongodbModule,
   ],
   controllers: [AppController],
   providers: [AppService],
