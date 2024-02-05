@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { EthereumProvider } from '@app/ethersv5/eth-provider';
+import { logger } from './utils/winston.config';
 
 @Injectable()
 export class AppService {
@@ -13,6 +14,7 @@ export class AppService {
     const chainId = await provider.getNetwork();
 
     const res = `Hello Block Chain ${chainLayer} ${chainId.chainId}`;
+    logger.log('elk', 'testtest');
     return res;
   }
 }
